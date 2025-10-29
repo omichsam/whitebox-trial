@@ -1,0 +1,76 @@
+#students_card{
+		min-height: 250px;
+		border-radius: 20px;
+		border:1px solid #ccc;
+		margin-top: 20px;
+		background-color: #d3effb;
+
+	}
+	#id_logo{
+		min-height: 100px;
+		background-size: contain;
+	}
+	#id_profile_st{
+		min-height: 80px;
+box-shadow: 0 0 1px #000;
+background-size: 100% 100%;
+max-width: 100px;
+background-position: center;
+border-radius:9px;
+	}
+	.lo_ga{
+		margin-top: 20px;
+		
+		background-repeat: no-repeat;
+	}
+	.lo_gaa{
+		margin-top: 20px;
+		background-repeat: no-repeat;
+	
+	}
+	#students_holder_card{
+		min-height: 240px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		opacity: 0.5;
+    filter: alpha(opacity=50);
+    text-align: center;
+	}
+	#students_holder_cad{
+		text-align: center;
+	}
+#print_card{
+	text-align: center;
+	margin-top: 20px;
+}
+#schholl_card_school{
+	text-align: center;
+}
+.display_id_det{
+	font-size: 12px;
+	font-weight: 200px;
+}
+.p_d_b{
+color: #114127e6;
+text-align:left;
+
+
+}
+.p_d_a{
+	text-align: left;
+	color: #2d0c5d;
+}
+.p_sign{
+	min-height: 30px;
+	background-size: cover;
+		background-repeat: no-repeat;
+}
+#borde_ids{
+	bottom-left:2px dashed #ccc;
+}
+#id_dd{
+	min-height: 103px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+}

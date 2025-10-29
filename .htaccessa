@@ -1,0 +1,4 @@
+#BEGIN WHITEBOX
+php_flag display_errors Off
+Options -Indexes
+#END WHITEBOX

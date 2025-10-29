@@ -1,0 +1,61 @@
+/* Mobile First Approach */
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) {
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-section {
+    padding: 180px 0 120px;
+  }
+
+  .card {
+    margin-bottom: 30px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .hero-section h1 {
+    font-size: 4rem;
+  }
+
+  .footer .col-md-4 {
+    margin-bottom: 0;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Mobile specific styles */
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .hero-section {
+    padding: 120px 0 80px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .navbar-brand img {
+    height: 40px;
+  }
+}

@@ -1,0 +1,150 @@
+   #feedback_disp{
+    min-height: 400px;
+    box-shadow: 0 0 2px #ccc;
+    border-radius:4px;
+    background:#fff;
+
+  }
+  #header_innovation{
+text-transform: uppercase;
+text-align: center;
+border-bottom: 1px solid #ccc;
+border-radius:5px;
+
+  }
+  .innovations_holder{
+    min-height: 40px;
+    box-shadow: 0 0 2px #ccc;
+    margin-top:5px;
+    background:#fff;
+    overflow: hidden;
+    max-height: 40px;
+  }
+  .content_ino{
+    min-height: 10px;
+    box-shadow: 0 0 2px #ccc;
+  }
+  .header_innov{
+    min-height: 10px;
+    box-shadow: 0 0 2px #ccc;
+  }
+  .in_headers{
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+  }
+  .content_h{
+
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+  }
+  .innovation_attachements{
+    min-height: 180px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+
+  }
+  .even_row{
+    background: #e3edf0;
+  }
+  .viewed{
+background: #ccc;
+  }
+  .view_process{
+    cursor: pointer;
+  }
+ 
+#filtered_dd{
+
+    min-height: 500px;
+    background: #fff;
+    margin-bottom: 20px;
+  }
+  .upper_display{
+    min-height: 94px;
+  }
+  #reportcontrols{
+  height: 50px;
+  color: #000;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.feedback_dives{
+  min-height: 200px;
+  box-shadow: 0 0 2px #ccc;
+  margin-top:5px;
+  padding-bottom: 10px;
+}
+.top_fb{
+  min-height: 20px;
+}
+.qustion_holder{
+  font-weight: bolder;
+  text-align: center;
+}
+.coment_hold{
+  color: #e7663c;
+}
+.intro_head{
+  border-bottom: 2px solid #ccc;
+  border-radius: 5px;
+}
+.reply_areas{
+        border: 1px solid #ccc;
+    resize: none;
+    min-height: 80px;
+    background: #edf1f5;
+    margin-top: 4px;
+  }
+  .reply_discuss{
+    margin-top: 10px;
+    font-weight: bolder;
+background: #e6b234;
+  }
+  .data_sends{
+    margin-top: 10px;
+  }
+  #datasendserrordddddd{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+   .table_rowers{
+    min-width: 40px;
+  }
+  #head_fgt{
+      text-transform:uppercase;
+      text-align:center;
+      font-weight:bolder;
+  }
+  #innovation_fedheader{
+      text-align:center;
+      font-size:18px;
+      font-weight:bolder;
+      text-transform:uppercase;
+  }
+    .holder_otwo{
+    min-height: 100px;
+    border-top: 2px solid #ccc;
+  }
+  #holder_one{
+    min-height: 100px;
+  }
+  .innovations_load{
+    min-height: 200px;
+    margin-top: 5px;
+    max-height: 200px;
+    overflow: auto;
+
+  }
+  #report_display{
+  margin-top: 5px;
+    min-height: 100px;
+    box-shadow: 0 0 3px #ccc;
+  }
+  #bb_holders{
+    min-height: 40px;
+    border-right: 2px solid #ccc;
+    margin-bottom: 5px;
+  }

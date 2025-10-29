@@ -1,0 +1,41 @@
+ <div id="chatbot-container" class="chatbot-container">
+        <div class="gradient-bg text-white p-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-2">
+                    <i class="fas fa-robot text-sm"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm">Huduma Assistant</h4>
+                    <p class="text-xs opacity-80">Online</p>
+                </div>
+            </div>
+            <button id="chatbot-close" class="text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- Chatbot Content -->
+        <div class="p-3 h-64 overflow-y-auto bg-gray-50">
+            <div class="flex mb-3">
+                <div
+                    class="w-6 h-6 gradient-bg rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+                    <i class="fas fa-robot text-xs"></i>
+                </div>
+                <div class="bg-white rounded-lg p-2 shadow-sm max-w-xs">
+                    <p class="text-xs">Hello! I'm here to help you navigate
+                        the Huduma WhiteBox platform. How can I
+                        assist you today?</p>
+                </div>
+            </div>
+            <!-- More messages here -->
+        </div>
+        <!-- Chatbot Input -->
+        <div class="absolute bottom-0 left-0 right-0 border-t border-gray-200 p-2 bg-white">
+            <div class="flex">
+                <input type="text" placeholder="Type your message..."
+                    class="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent">
+                <button class="gradient-bg text-white px-3 rounded-r-lg">
+                    <i class="fas fa-paper-plane text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,2 @@
+[13-Sep-2020 16:12:34 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tumcathc/admin.tumcathcom.com/connect.php on line 2
+[13-Sep-2020 16:12:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tumcathc/admin.tumcathcom.com/modules/system/coordinator/duty/duty.php:1) in /home/tumcathc/admin.tumcathcom.com/connect.php on line 49

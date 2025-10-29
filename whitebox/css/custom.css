@@ -1,0 +1,55 @@
+.nmk_controls:hover{
+font-size:14px;
+text-transform: uppercase;
+background:#ccc;
+
+  }
+ 
+  .odd_rows{
+
+	min-height: 25px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	background:#fff;
+  }
+  .even_rows{
+min-height: 25px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+  }
+.nmk_controls{
+  cursor:pointer;
+  background-image: -webkit-linear-gradient(-90deg,rgba(255,255,255,0),rgba(37,37,37,0.13));
+border-width: 1px;
+border-style: solid;
+border-color: #7e675c #755c50 #63493d #755c50;
+border-radius: 0px;
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+-moz-transition: all 0.5s;
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+padding: 13px 10px;
+color: #000;
+text-shadow: 0 1px 2px #000000;
+}
+.menu_bodys{
+min-height: 90%;
+background-color: #e4e4e4;
+}
+.bordered{
+	border-bottom: 2px solid #ccc;
+	border-radius: 10px;
+}
+.dtittle_holders{
+	min-height: 25px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background:#ccc;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+.overflow_data{
+       overflow:hidden;
+  text-overflow:ellipsis;
+}

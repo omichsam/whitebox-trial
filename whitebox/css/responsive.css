@@ -1,0 +1,45 @@
+@media all and (max-width:768px){
+.mobile_hidden{
+	display: none;
+}
+.mobipdless{
+ 	padding: 4px  !important;
+ }
+
+}
+@media all and (min-width: 768px){
+.desktop_hidden{
+	display: none;
+}
+
+}
+@media all and (max-width:500px){
+#menu_page{
+min-width:80% ;
+max-width: 80%;
+}
+#header_bottom ul li{
+	overflow: hidden;
+}
+#header_bottom ul li i{
+font-size: 12px;
+padding: 0px;
+}
+#header_bottom ul li span{
+  font-size: 11px;
+}
+.s30 {
+    width: 29%;
+}
+#header_top ul li span {
+    font-size: 10px;
+}
+ #header_top ul li i {
+ 
+    font-size: 14px;
+}
+}
+@media all and (max-width:300px){
+
+
+}

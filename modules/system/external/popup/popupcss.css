@@ -1,0 +1,87 @@
+  .popuppages_wrap{
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  z-index: 100;
+  display:none;
+}
+.poppageback_btn{
+  color:#fff;
+}
+.popupheads{
+padding: 7px 0px;
+min-height: 40px !important;
+
+}
+.popupheadcontent{
+text-align: right;
+color: #fff;
+font-weight: bold;
+padding: 4px 10px;
+
+}
+.popbody{
+ float: left;
+ width: 100%;
+ height: 93%;
+ overflow: auto;
+
+}
+#alertoverly1,.overly,.pageoverly{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top:0px;
+ background:rgba(0,0,0,0.5);
+z-index: 999;
+padding: 10px;
+}
+#alertoverly2{
+z-index: 9999;
+}
+#alertoverly3{
+z-index: 99999;
+}
+#alert_wrap{
+  background: #fff;
+  height: 300px;
+  margin-top:70px;
+  padding: 0px;
+  box-shadow: 0px 2px 6px -2px #000;
+
+}
+#alert_head{
+ border-bottom: 1px solid #ccc;
+ float: left;
+ width: 100%;
+ height: 13%;
+ overflow: hidden;
+}
+#close_alert_btn{
+float: left;
+}
+#alert_title{
+float: left;
+width: 80%;
+text-align: center;
+padding: 10px;
+font-weight: bold;
+
+}
+#alert_body{
+float: left;
+width: 100%;
+background: #ccc;
+height: 87%;
+background: #f9f6f6;
+}
+#alertcontainer,pagewrap{
+position: absolute;left: 0px;
+top: 0px;
+right: 0px;
+bottom: 0px;
+}

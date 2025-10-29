@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Modal System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.3s forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.3s forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .success-message {
+            transition: all 0.5s ease;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-submit {
+            background: linear-gradient(to right, #4f46e5, #ec4899);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(to right, #4338ca, #db2777);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">Unified Modal System</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <button onclick="openModal('authModal', 'loginForm')"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                Auth Modal
+            </button>
+            <button onclick="openModal('infoModal')"
+                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                Info Modal
+            </button>
+            <button onclick="openModal('investorModal')"
+                class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                Investor Modal
+            </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Features</h2>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Unified modal system with consistent behavior</li>
+                <li>No class conflicts between different modals</li>
+                <li>Standardized functions across all forms</li>
+                <li>Can reopen modals without page refresh</li>
+                <li>Escape key and click outside to close</li>
+                <li>Smooth animations for all transitions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal"
+        class="modal fixed inset-0 flex items-center justify-center bg-black/60 opacity-0 pointer-events-none transition-opacity duration-500 z-50 p-4">
+        <div
+            class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden transform scale-95 opacity-0 transition duration-500">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 p-5 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-40 h-12 rounded-lg flex items-center justify-center mr-3">
+                        <!-- <span class="text-primary font-bold text-xl">HWB</span> -->
+                        <img src="sources/images/logo/Whitebox.png" alt="Whitebox Logo" height="100px" srcset>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-white/80 hover:text-white transition">
+                    <i class="fas fa-times fa-2x text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6 relative overflow-hidden" style="min-height: 450px;">
+                <!-- LOGIN FORM -->
+                <div id="loginForm" class="space-y-5 animate-slide-in-right">
+                    <h2 class="text-2xl font-bold text-center text-gray-800">Welcome Back</h2>
+                    <p class="text-center text-gray-500">Sign in to continue to your account</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Enter your email">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Enter your password">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" id="remember"
+                                    class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500/20">
+                                <label for="remember" class="text-sm text-gray-600">Remember me</label>
+                            </div>
+                            <button onclick="showForm('forgotForm')"
+                                class="text-sm text-blue-600 hover:text-blue-800 transition">Forgot Password?</button>
+                        </div>
+
+                        <button
+                            class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 font-medium">
+                            Sign In <i class="ml-2 fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="text-center text-sm mt-4">
+                        <span class="text-gray-600">Don't have an account?</span>
+                        <button onclick="showForm('signupForm')"
+                            class="text-blue-600 hover:text-blue-800 transition font-medium ml-2">Sign Up</button>
+                    </div>
+                </div>
+
+                <!-- SIGN UP FORM -->
+                <div id="signupForm" class="space-y-5 hidden animate-slide-in-left">
+                    <h2 class="text-2xl font-bold text-center text-gray-800">Create Account</h2>
+                    <p class="text-center text-gray-500">Join us today and get started</p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text"
+                                class="w-full border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                placeholder="First Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text"
+                                class="w-full border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Enter your email">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <input type="text"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Your phone number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                        <select
+                            class="w-full border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition">
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Create a password">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password"
+                                    class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                    placeholder="Confirm your password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <input type="checkbox" id="terms"
+                            class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500/20">
+                        <label for="terms" class="text-sm text-gray-600">I accept the <a href="#"
+                                class="text-blue-600 hover:text-blue-800 transition">Terms and Conditions</a></label>
+                    </div>
+
+                    <button
+                        class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 font-medium">
+                        Create Account <i class="ml-2 fas fa-user-plus"></i>
+                    </button>
+
+                    <div class="text-center text-sm">
+                        <span class="text-gray-600">Already have an account?</span>
+                        <button onclick="showForm('loginForm')"
+                            class="text-blue-600 hover:text-blue-800 transition font-medium ml-2">Sign In</button>
+                    </div>
+                </div>
+
+                <!-- FORGOT PASSWORD FORM -->
+                <div id="forgotForm" class="space-y-5 hidden animate-fade-in">
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-key text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Reset Password</h2>
+                        <p class="text-gray-500 mt-1">Enter your email to receive a reset link</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email"
+                                class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                                placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 font-medium">
+                        Send Reset Link <i class="ml-2 fas fa-paper-plane"></i>
+                    </button>
+
+                    <div class="text-center text-sm">
+                        <button onclick="showForm('loginForm')"
+                            class="text-blue-600 hover:text-blue-800 transition font-medium">
+                            <i class="fas fa-arrow-left mr-1"></i> Back to Sign In
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="infoModal"
+        class="modal fixed top-0 right-0 z-50 flex items-center justify-end h-full w-full bg-black/50 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div
+            class="modal-content flex flex-col bg-white max-w-sm w-full h-auto shadow-2xl rounded-2xl transform translate-x-full opacity-0 transition-all duration-500">
+            <div class="flex justify-between items-center p-5 bg-blue-600 text-white rounded-t-2xl">
+                <h2 class="text-lg font-semibold">More Info</h2>
+                <button onclick="closeModal()" class="text-white hover:text-blue-200 focus:outline-none">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-5">
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <a onclick="openModal('investorModal')"
+                        class="flex flex-col items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-hand-holding-usd text-white"></i>
+                        </div>
+                        <span class="text-xs font-medium text-gray-700 text-center">Investors</span>
+                    </a>
+                    <a href="#partners"
+                        class="flex flex-col items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-handshake text-white"></i>
+                        </div>
+                        <span class="text-xs font-medium text-gray-700 text-center">Partners</span>
+                    </a>
+
+                    <div onclick="window.open('https://drive.google.com/drive/folders/1tLF_QrV0nFVV1zqJJjF40uNDrqMlVI-6', '_blank')"
+                        class="flex flex-col items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-book text-white"></i>
+                        </div>
+                        <span class="text-xs font-medium text-gray-700 text-center">Library</span>
+                    </div>
+
+                    <div
+                        class="flex flex-col items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-newspaper text-white"></i>
+                        </div>
+                        <span class="text-xs font-medium text-gray-700 text-center">Media</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-comment-dots text-blue-600"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-sm">Talk to us</span>
+                    </a>
+
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-question-circle text-blue-600"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-sm">FAQs</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investor Modal -->
+    <div id="investorModal"
+        class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-70 opacity-0 pointer-events-none transition-opacity duration-300 z-50 p-4">
+        <div
+            class="modal-content bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-transform duration-300">
+            <div class="sticky top-0 bg-white z-10 rounded-t-xl border-b flex justify-between items-center p-6">
+                <h3 class="text-2xl font-bold text-blue-800 flex items-center">
+                    <i class="fas fa-hand-holding-usd mr-3 text-blue-600"></i>
+                    Investor Request Form
+                </h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-red-500 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                    <p class="text-blue-800 text-center"><i class="fas fa-info-circle mr-2"></i>
+                        The Huduma WhiteBox Platform receives, evaluates and facilitates growth of Kenyan Innovations,
+                        which we evaluate and scale as per their requirements.
+                    </p>
+                    <p class="text-blue-800 text-center mt-2">If you would like to invest in any of the top innovations
+                        evaluated, kindly create an account with us to view the viable solutions.</p>
+                </div>
+
+                <form id="investors" class="space-y-6">
+                    <input type="hidden" name="_token" value="dummy_token">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label for="investorName" class="block text-sm font-medium text-gray-700 mb-1">Investor Name
+                                *</label>
+                            <input
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Full Name" name="investorName" type="text" id="investorName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Title" class="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                name="Title" id="head_tt" required>
+                                <option value="">Select Title</option>
+                                <option>Mr</option>
+                                <option>Mrs</option>
+                                <option>Miss</option>
+                                <option>Dr</option>
+                                <option>Prof</option>
+                                <option>Eng</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address
+                                *</label>
+                            <input
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="e.g username@example.com" name="email" type="email" id="email"
+                                maxlength="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PhoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number
+                                *</label>
+                            <input
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="e.g 0712345678 or +254712345678" name="PhoneNumber" maxlength="13"
+                                type="text" id="PhoneNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="CompanyName" class="block text-sm font-medium text-gray-700 mb-1">Company Name
+                                *</label>
+                            <input
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Company Name" name="CompanyName" type="text" id="CompanyName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Company_type" class="block text-sm font-medium text-gray-700 mb-1">Company Type
+                                *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                id="company_types" name="Company_type" required>
+                                <option value="">Select Company Type</option>
+                                <option>Sole Proprietorship</option>
+                                <option>Public Parastatal</option>
+                                <option>Limited Company</option>
+                                <option>Partnership</option>
+                                <option>Limited Liability Partnership</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country of Origin
+                                *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                id="countries" name="country" required>
+                                <option value="">Select Country</option>
+                                <option>Kenya</option>
+                                <option>Uganda</option>
+                                <option>Tanzania</option>
+                                <option>Rwanda</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sector_id" class="block text-sm font-medium text-gray-700 mb-1">Sector you would
+                                like to invest in *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                id="sector_id" name="sector_id" required>
+                                <option value="">Select Sector</option>
+                                <option>Agriculture</option>
+                                <option>Technology</option>
+                                <option>Healthcare</option>
+                                <option>Education</option>
+                                <option>Finance</option>
+                                <option>Energy</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="investor_type" class="block text-sm font-medium text-gray-700 mb-1">Investor
+                                Type *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                id="investor_type" name="investor_type" required>
+                                <option value="">Select Investor Type</option>
+                                <option>Partner</option>
+                                <option>Investor/Venture Capitalist</option>
+                                <option>Investor/Angel Investor</option>
+                                <option>Investor/Peer-to-Peer lender</option>
+                                <option>Investor/Personal Investor</option>
+                                <option>Investor/Bank</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="HearAboutUs" class="block text-sm font-medium text-gray-700 mb-1">How did you
+                                hear about Huduma WhiteBox? *</label>
+                            <select
+                                class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                id="HearAboutUs" name="HearAboutUs" required>
+                                <option value="">Select Option</option>
+                                <option>Internet</option>
+                                <option>Newspaper</option>
+                                <option>Radio</option>
+                                <option>Another Investor</option>
+                                <option>Flyer</option>
+                                <option>Social Media</option>
+                                <option>Referral</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Would you like to mentor innovators
+                            at Huduma WhiteBox?</label>
+                        <div class="flex items-center space-x-6">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="mentor" value="Yes"
+                                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300" id="mentora"
+                                    checked>
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="mentor" value="No"
+                                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300" id="mentorb">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-center space-x-4">
+                        <button type="submit"
+                            class="btn-submit text-white font-semibold px-8 py-3 rounded-lg shadow-md">
+                            <i class="fas fa-paper-plane mr-2"></i> Submit Request
+                        </button>
+                        <button type="button" onclick="closeModal()"
+                            class="btn-close bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-8 py-3 rounded-lg shadow-md">
+                            <i class="fas fa-times mr-2"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message"
+        class="success-message fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg max-w-sm opacity-0 transform translate-y-10">
+        <i class="fas fa-check-circle mr-2"></i> Thank you for your interest! We will contact you shortly.
+    </div>
+
+    <script>
+        // Unified modal system
+        let activeModal = null;
+        let activeForm = null;
+
+        // Open modal function
+        function openModal(modalId, formId = null) {
+            // Close any currently open modal
+            if (activeModal) {
+                closeModal();
+                // Small delay to allow closing animation to complete
+                setTimeout(() => {
+                    actuallyOpenModal(modalId, formId);
+                }, 300);
+            } else {
+                actuallyOpenModal(modalId, formId);
+            }
+        }
+
+        function actuallyOpenModal(modalId, formId) {
+            const modal = document.getElementById(modalId);
+            activeModal = modalId;
+
+            // Remove hidden state and trigger animation
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            // Modal-specific animations
+            if (modalId === 'infoModal') {
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.classList.remove('translate-x-full', 'opacity-0');
+                modalContent.classList.add('translate-x-0', 'opacity-100');
+            } else {
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }
+
+            // Show specific form if requested
+            if (formId) {
+                showForm(formId);
+            }
+        }
+
+        // Close modal function
+        function closeModal() {
+            if (!activeModal) return;
+
+            const modal = document.getElementById(activeModal);
+
+            // Modal-specific closing animations
+            if (activeModal === 'infoModal') {
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.classList.remove('translate-x-0', 'opacity-100');
+                modalContent.classList.add('translate-x-full', 'opacity-0');
+            } else {
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+            }
+
+            // Fade out the modal background
+            modal.classList.add('opacity-0', 'pointer-events-none');
+
+            // Reset active modal after transition
+            setTimeout(() => {
+                activeModal = null;
+            }, 300);
+        }
+
+        // Show form function for auth modal
+        function showForm(formId) {
+            document.querySelectorAll('#authModal .space-y-5').forEach(form => {
+                form.classList.add('hidden');
+                form.classList.remove('animate-slide-in-right', 'animate-slide-in-left', 'animate-fade-in');
+            });
+
+            const form = document.getElementById(formId);
+            form.classList.remove('hidden');
+
+            // Add animation
+            form.classList.remove('animate-slide-in-right', 'animate-slide-in-left', 'animate-fade-in');
+            if (formId === 'loginForm') {
+                form.classList.add('animate-slide-in-right');
+            } else if (formId === 'signupForm') {
+                form.classList.add('animate-slide-in-left');
+            } else {
+                form.classList.add('animate-fade-in');
+            }
+
+            activeForm = formId;
+        }
+
+        // Form submission handler
+        document.getElementById('investors').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.remove('opacity-0', 'translate-y-10');
+            successMessage.classList.add('show');
+
+            // Close modal after a delay
+            setTimeout(() => {
+                closeModal();
+
+                // Hide success message after some time
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                    successMessage.classList.add('opacity-0', 'translate-y-10');
+                }, 3000);
+            }, 1000);
+        });
+
+        // Auth form submissions
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Login functionality would go here');
+            closeModal();
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Signup functionality would go here');
+            closeModal();
+        });
+
+        document.getElementById('forgotForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Password reset functionality would go here');
+            closeModal();
+        });
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && activeModal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

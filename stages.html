@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Request Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-jit-cdn"></script>
+    <style>
+        /* Tailwind's default styles already apply, but you can add custom styles here if needed */
+    </style>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+    <!-- Button to trigger modal -->
+    <div class="text-center">
+        <button onclick="openModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full">
+            Open Investor Form
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg p-6 w-11/12 sm:w-1/2 lg:w-1/3">
+            <div class="text-center mb-4">
+                <h3 class="text-2xl font-bold text-blue-600">
+                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full">Investors Request</span>
+                </h3>
+            </div>
+
+            <form id="investors" class="space-y-4">
+                <!-- CSRF Token Placeholder -->
+                <input type="hidden" name="_token" value="dummy_token">
+
+                <div class="text-center">
+                    <p>The Huduma WhiteBox Platform receives, evaluates, and facilitates the growth of Kenyan
+                        innovations, which we evaluate and scale as per their requirements.</p>
+                    <p>If you would like to invest in any of the top innovations evaluated, kindly create an account
+                        with us to view the viable solutions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="form-group">
+                        <label for="investorName">Investor Name:</label>
+                        <input class="form-input" placeholder="Full Name" name="investorName" type="text"
+                            id="investorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Title">Title:</label>
+                        <input class="form-input" placeholder="Mr/Mrs/Miss/Dr/Prof/Eng" name="Title" type="text"
+                            id="head_tt" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input class="form-input" placeholder="e.g username@example.com" name="email" type="email"
+                            id="email" maxlength="50" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PhoneNumber">Phone Number:</label>
+                        <input class="form-input" placeholder="e.g 0712345678 or +254712345678" name="PhoneNumber"
+                            maxlength="13" type="text" id="PhoneNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CompanyName">Company Name:</label>
+                        <input class="form-input" placeholder="Company Name" name="CompanyName" type="text"
+                            id="CompanyName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Company_type">Company Type:</label>
+                        <select class="form-input" id="company_types" name="Company_type" required>
+                            <option value="">Select</option>
+                            <option>Sole Proprietorship</option>
+                            <option>Public Parastatal</option>
+                            <option>Limited Company</option>
+                            <option>Partnership</option>
+                            <option>Limited Liability Partnership</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country of Origin:</label>
+                        <select class="form-input" id="countries" name="country" required>
+                            <option value="">Select Country</option>
+                            <option>Kenya</option>
+                            <option>Uganda</option>
+                            <option>Tanzania</option>
+                            <option>Rwanda</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sector_id">Sector you would like to invest in:</label>
+                        <select class="form-input" id="sector_id" name="sector_id" required>
+                            <option value="">Select Sector</option>
+                            <option>Agriculture</option>
+                            <option>Technology</option>
+                            <option>Healthcare</option>
+                            <option>Education</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="investor_type">Investor Type:</label>
+                        <select class="form-input" id="investor_type" name="investor_type" required>
+                            <option value="">Select Investor Type</option>
+                            <option>Partner</option>
+                            <option>Investor/Venture Capitalist</option>
+                            <option>Investor/Angel Investor</option>
+                            <option>Investor/Peer-to-Peer lender</option>
+                            <option>Investor/Personal Investor</option>
+                            <option>Investor/Bank</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="HearAboutUs">How did you hear about Huduma WhiteBox?</label>
+                        <select class="form-input" id="HearAboutUs" name="HearAboutUs" required>
+                            <option value="">Select</option>
+                            <option>Internet</option>
+                            <option>Newspaper</option>
+                            <option>Radio</option>
+                            <option>Another Investor</option>
+                            <option>Flyer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Would you like to mentor innovators at Huduma WhiteBox?</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="mentor" value="Yes" class="check_mentors" id="mentora"
+                                    checked>
+                                <span class="ml-2">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="mentor" value="No" class="check_mentors" id="mentorb">
+                                <span class="ml-2">No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-full">Submit</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <button onclick="closeModal()" class="bg-red-600 text-white px-6 py-2 rounded-full">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Open Modal
+        function openModal() {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

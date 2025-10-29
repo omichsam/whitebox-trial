@@ -1,0 +1,84 @@
+ .splashimg{
+  width: 100%;
+  position: absolute;;
+  height: 100%;
+  left:0px;
+  right: 0px;
+  top:0px;
+ }
+ .startbox{
+  position: absolute;
+  bottom: 10%;
+  min-height: 100px;
+  max-height: 80%;
+  left: 25%;
+  padding: 10px;
+   }
+  .splashbtns,.signupbtn,.loginbtn{
+    border: 1px solid;
+margin: 10px;
+color: #008aff;
+font-weight: bold;
+font-size: 12px;
+
+  }
+.splashpages
+{
+    margin-top: -20px;
+  border: 1px solid;
+  position: fixed;
+  bottom: 0px;
+  min-height: 60%;
+  max-height: 90%;
+  left: 33%;
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid #0009;
+box-shadow: 0px 0px 19px -12px #0009;
+z-index: 
+background-color:#fff;
+} 
+.splashinputs{
+  width: 100%;
+padding: 6px;
+border: none;
+border-bottom: 1px solid #ccc;
+margin-bottom: 4px;
+color: #6a8d96;
+
+}
+.splashpages h2{
+margin: 0px 0px 25px;
+padding: 6px 0px;
+font-weight: bold;
+
+}
+.splashbackbtn{
+  position: absolute;
+left: 0px;
+top: 9px;
+
+}
+.inputwraps{
+  font-weight: bold;
+  font-size: 12px;
+}
+.inputwraps span{
+  font-size: 8px;
+  float: right;
+  color:#F00;
+}
+@media all and (max-width:768px){  
+.startbox,.splashpages{
+  left: 0px;
+ }
+}
+ @media all and (max-width:500px){
+ .splashimg{
+  display: none;
+ }
+ .splashmobile{
+  display: block;
+ }
+ 
+}

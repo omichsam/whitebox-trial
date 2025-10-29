@@ -1,0 +1,78 @@
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+th,
+td {
+  padding: 16px;
+  text-align: left;
+  font-size: 0.875rem; /* 14px */
+  color: #4a5568; /* Tailwind's gray-700 */
+}
+
+thead {
+  background-color: #f7fafc; /* Light Gray background for header */
+}
+
+th {
+  font-weight: 600; /* Bold text for headers */
+  color: #1e3a8a; /* Primary color */
+}
+
+tr {
+  transition: background-color 0.3s ease-in-out;
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb; /* Alternating row color */
+}
+
+tr:hover {
+  background-color: #e2e8f0; /* Light hover effect */
+}
+
+a {
+  color: #3b82f6; /* Tailwind's blue-500 */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #2563eb; /* Hover effect for links */
+  text-decoration: underline;
+}
+
+td {
+  border-bottom: 1px solid #e2e8f0; /* Light border for table rows */
+}
+
+tfoot {
+  background-color: #f7fafc;
+}
+
+tfoot td {
+  text-align: right;
+  font-weight: 600;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+
+  th,
+  td {
+    padding: 12px; /* Reduced padding on smaller screens */
+  }
+}
