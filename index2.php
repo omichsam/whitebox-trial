@@ -67,7 +67,6 @@ if (isset($_SESSION["id"])) {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #085c02ff 0%, #861616a0 100%);
             min-height: 100vh;
-            /* display: flex; */
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -75,25 +74,6 @@ if (isset($_SESSION["id"])) {
             overflow-x: hidden;
         }
 
-        /* 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: auto;
-            / * background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>'); * /
-            background: url('sources/images/slider/image1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-blend-mode: darken;
-            / * blends overlay + image * /
-            /  * sources/images/slider/image5.jpg background-size: cover; * /
-            z-index: -2;
-        } */
         /* Background Image */
         body::before {
             content: '';
@@ -104,7 +84,6 @@ if (isset($_SESSION["id"])) {
             height: 100%;
             background: url('sources/images/slider/image5.jpg') center/cover no-repeat;
             z-index: -2;
-            /* very far behind */
         }
 
         /* Dark Overlay */
@@ -116,9 +95,7 @@ if (isset($_SESSION["id"])) {
             width: 100%;
             height: 100%;
             background: rgba(68, 115, 61, 0.55);
-            /* darkness level */
             z-index: -1;
-            /* sits above image, below everything else */
         }
 
         .auth-space {
@@ -191,16 +168,12 @@ if (isset($_SESSION["id"])) {
         .header-flex {
             display: flex;
             justify-content: space-between;
-            /* pushes items to far left and right */
             align-items: center;
-            /* vertically centers them */
             width: 100%;
         }
 
         .logo_position {
             height: 100;
-            /* width: 100px; */
-            /* adjust as needed */
         }
 
         .back-home {
@@ -228,7 +201,7 @@ if (isset($_SESSION["id"])) {
             margin-bottom: 8px;
             font-weight: 500;
             color: var(--dark);
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
 
         .form-control {
@@ -253,7 +226,7 @@ if (isset($_SESSION["id"])) {
             right: 15px;
             top: 42px;
             color: var(--gray);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .password-field-container {
@@ -561,6 +534,30 @@ if (isset($_SESSION["id"])) {
             color: white;
             box-shadow: 0 2px 10px rgba(188, 5, 5, 1);
         }
+
+        /* Activation and Reset specific styles */
+        .activation-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .activation-icon {
+            font-size: 48px;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .activation-message {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .resend-link {
+            margin-top: 20px;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: underline;
+        }
     </style>
     <?php include('links.php'); ?>
 </head>
@@ -600,7 +597,6 @@ if (isset($_SESSION["id"])) {
                             <label for="password-field">Password</label>
                             <input id="password-field" type="password" class="form-control"
                                 placeholder="Enter your password" name="password" required>
-                            <!-- <i class="fas fa-lock input-icon"></i> -->
                             <span class="password-toggle" id="togglePassword">
                                 <i class="fas fa-eye"></i>
                             </span>
@@ -623,10 +619,59 @@ if (isset($_SESSION["id"])) {
                 </div>
             </div>
 
+            <!-- Activation Section -->
+            <div class="animation not_shown auth-card" id="activation_page">
+                <div class="card-headera">
+                    <div class="header-flex">
+                        <a class="back-home start" href="index.php">
+                            <i class="fas fa-arrow-left"></i> Back Home
+                        </a>
+
+                        <div class="end">
+                            <img src="Huduma_WhiteBox/Whitebox.png" alt="logo" class="logo_position">
+                        </div>
+                    </div>
+
+                    <h2>Account Activation</h2>
+                    <p class="text-muted">Activate your WhiteBox account</p>
+                </div>
+
+                <div class="card-body">
+                    <div class="activation-container">
+                        <div class="activation-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3>Check Your Email</h3>
+                        <p class="activation-message">We've sent an activation code to your email address. Please enter
+                            it below to activate your account.</p>
+
+                        <form id="activation_form" class="omb_loginForm bv-form" autocomplete="off" method="POST"
+                            novalidate="novalidate">
+                            <div class="form-group">
+                                <label for="activation_code">Activation Code</label>
+                                <input type="text" class="form-control" id="activation_code" name="activation_code"
+                                    placeholder="Enter activation code" required>
+                                <i class="fas fa-key input-icon"></i>
+                            </div>
+                            <button type="button" id="activate_account" class="btn btn-success py-3">
+                                <i class="fas fa-check-circle"></i> Activate Account
+                            </button>
+                        </form>
+                        <div class="error-message" id="activation_error"></div>
+                        <div class="success-message" id="activation_success"></div>
+                        <div class="resend-link" id="resend_activation">
+                            Didn't receive the code? <a>Resend Activation Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footera">
+                    Back to login? <a id="back_to_login_from_activation" style="cursor: pointer;">Sign In</a>
+                </div>
+            </div>
+
             <!-- Password Reset Section -->
             <div class="animation not_shown auth-card" id="pass_resetpage">
                 <div class="card-headera">
-
                     <div class="header-flex">
                         <a class="back-home start" href="index.php">
                             <i class="fas fa-arrow-left"></i> Back Home
@@ -644,8 +689,7 @@ if (isset($_SESSION["id"])) {
                 <div class="card-body">
                     <div class="recover_dives" id="rec_ver">
                         <p style="text-align: center; margin-bottom: 20px; color: var(--gray);">Enter your email to
-                            reset
-                            your password</p>
+                            reset your password</p>
                         <form id="recover_form" class="omb_loginForm bv-form" autocomplete="off" method="POST"
                             novalidate="novalidate">
                             <div class="form-group">
@@ -689,7 +733,6 @@ if (isset($_SESSION["id"])) {
                                 <label for="password_n">New Password</label>
                                 <input type="password" class="form-control email" id="password_n" name="password_n"
                                     placeholder="New Password" required>
-                                <!-- <i class="fas fa-lock input-icon"></i> -->
                                 <span class="password-toggle" id="toggleNewPassword">
                                     <i class="fas fa-eye"></i>
                                 </span>
@@ -698,7 +741,6 @@ if (isset($_SESSION["id"])) {
                                 <label for="new_passworn">Confirm Password</label>
                                 <input type="password" class="form-control email" id="new_passworn" name="new_passworn"
                                     placeholder="Repeat Password" required>
-                                <!-- <i class="fas fa-lock input-icon"></i> -->
                                 <span class="password-toggle" id="toggleConfirmPassword">
                                     <i class="fas fa-eye"></i>
                                 </span>
@@ -718,7 +760,6 @@ if (isset($_SESSION["id"])) {
             <!-- Registration Section -->
             <div class="animation not_shown auth-card" id="register_page">
                 <div class="card-headera">
-
                     <div class="header-flex">
                         <a class="back-home start" href="index.php">
                             <i class="fas fa-arrow-left"></i> Back Home
@@ -774,7 +815,6 @@ if (isset($_SESSION["id"])) {
                             <label for="newpassword">Password</label>
                             <input type="password" class="form-control" id="newpassword" name="newpassword"
                                 placeholder="Password" required>
-                            <!-- <i class="fas fa-lock input-icon"></i> -->
                             <span class="password-toggle" id="toggleRegPassword">
                                 <i class="fas fa-eye"></i>
                             </span>
@@ -791,7 +831,6 @@ if (isset($_SESSION["id"])) {
                             <label for="password_confirm">Confirm Password</label>
                             <input type="password" class="form-control" id="password_confirm" name="password_confirm"
                                 placeholder="Confirm Password" required>
-                            <!-- <i class="fas fa-lock input-icon"></i> -->
                             <span class="password-toggle" id="toggleRegConfirmPassword">
                                 <i class="fas fa-eye"></i>
                             </span>
@@ -813,10 +852,6 @@ if (isset($_SESSION["id"])) {
             </div>
         </div>
     </div>
-
-    <!-- <div class="col-sm-12 col-xs-12 not_shown" id="loader">
-        <img src="Huduma_WhiteBox/images/loader1.gif" id="loaderimg">
-    </div> -->
 
     <input type="hidden" class="splashinputs" id="secret_key">
 
@@ -859,6 +894,10 @@ if (isset($_SESSION["id"])) {
             });
 
             document.getElementById('backlogins')?.addEventListener('click', function () {
+                showPage('login_page');
+            });
+
+            document.getElementById('back_to_login_from_activation')?.addEventListener('click', function () {
                 showPage('login_page');
             });
 
@@ -927,86 +966,14 @@ if (isset($_SESSION["id"])) {
             }
         });
     </script>
-
-    <!-- Your existing JavaScript code for form submission and validation remains here -->
-    <!-- ... (keep your existing JavaScript code for form handling) ... -->
-
 </body>
 
 </html>
-<script>
-    // Password toggle functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        // Toggle password visibility
-        function setupPasswordToggle(toggleId, passwordId) {
-            const toggle = document.getElementById(toggleId);
-            const password = document.getElementById(passwordId);
-
-            if (toggle && password) {
-                toggle.addEventListener('click', function () {
-                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                    password.setAttribute('type', type);
-                    this.querySelector('i').classList.toggle('fa-eye');
-                    this.querySelector('i').classList.toggle('fa-eye-slash');
-                });
-            }
-        }
-
-        // Set up all password toggles
-        setupPasswordToggle('togglePassword', 'password-field');
-        setupPasswordToggle('toggleNewPassword', 'password_n');
-        setupPasswordToggle('toggleConfirmPassword', 'new_passworn');
-        setupPasswordToggle('toggleRegPassword', 'newpassword');
-        setupPasswordToggle('toggleRegConfirmPassword', 'password_confirm');
-        setupPasswordToggle('toggleElearningPassword', 'passwordw1');
-        setupPasswordToggle('toggleElearningConfirmPassword', 'passwordw2');
-
-        // Page navigation
-        document.getElementById('back_toregister')?.addEventListener('click', function () {
-            showPage('register_page');
-        });
-
-        document.getElementById('back_tologin')?.addEventListener('click', function () {
-            showPage('login_page');
-        });
-
-        document.getElementById('forgot_pwd_title')?.addEventListener('click', function () {
-            showPage('pass_resetpage');
-        });
-
-        document.getElementById('backlogins')?.addEventListener('click', function () {
-            showPage('login_page');
-        });
-
-        document.getElementById('open_elerning')?.addEventListener('click', function () {
-            showPage('elearning_page');
-        });
-
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.logins');
-            pages.forEach(page => {
-                page.classList.add('not_shown');
-                page.classList.remove('animation');
-            });
-
-            // Show the selected page
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.remove('not_shown');
-                setTimeout(() => {
-                    targetPage.classList.add('animation');
-                }, 10);
-            }
-        }
-    });
-</script>
 
 <script type="text/javascript" src="Huduma_WhiteBox/js/jquery.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!--global js starts-->
 <script>
     // Your existing JavaScript code remains exactly the same
     <?php
@@ -1018,7 +985,7 @@ if (isset($_SESSION["id"])) {
 
     $(document).ready(function () {
         // Initialize page state
-        $(".logins").hide();
+        $(".auth-card").hide();
         $("#login_page").show();
 
         // Get email from URL parameters if exists
@@ -1028,29 +995,23 @@ if (isset($_SESSION["id"])) {
         // Navigation handlers
         $("#back_toregister").click(function (e) {
             e.preventDefault();
-            $(".logins").hide();
+            $(".auth-card").hide();
             $("#register_page").show();
         });
 
-        $("#back_tologin, #backlogins").click(function (e) {
+        $("#back_tologin, #backlogins, #back_to_login_from_activation").click(function (e) {
             e.preventDefault();
-            $(".logins").hide();
+            $(".auth-card").hide();
             $(".recover_dives").hide();
             $("#login_page").show();
         });
 
         $("#forgot_pwd_title").click(function (e) {
             e.preventDefault();
-            $(".logins").hide();
+            $(".auth-card").hide();
             $("#pass_resetpage").show();
             $(".recover_dives").hide();
             $("#rec_ver").show();
-        });
-
-        $("#open_elerning").click(function (e) {
-            e.preventDefault();
-            $(".logins").hide();
-            $("#elearning_page").show();
         });
 
         // Email validation function
@@ -1072,113 +1033,6 @@ if (isset($_SESSION["id"])) {
         function hideLoader(element) {
             element.html("");
         }
-
-        // E-learning form validation and submission
-        $("#emaile").focusout(function () {
-            var email = $(this).val();
-            if (!email) return;
-
-            if (!validateEmail(email)) {
-                $(this).val("").css("border", "2px solid red");
-                $("#errorreport").html("Check your email address!");
-            } else {
-                $(this).css("border", "1px solid #ccc");
-                $("#errorreport").html("");
-            }
-        });
-
-        $("#DateOfBirth").focusout(function () {
-            var oldyeard = '<?php echo date("Y"); ?>';
-            var mydate = $(this).val();
-            var d = new Date(mydate);
-            var n = d.getFullYear();
-            var differenced = oldyeard - n;
-
-            if (differenced < 18) {
-                $(this).val("");
-                $("#errorreport").html("Date of birth Must be above 18 years");
-                $(this).css("border", "2px solid red");
-            } else {
-                $("#errorreport").html("");
-                $(this).css("border", "1px solid #ccc");
-            }
-        });
-
-        $("#Submitelerning").click(function () {
-            var error = "";
-            var requiredFields = [
-                $("#fname"), $("#sname"), $("#genderb"), $("#DateOfBirth"),
-                $("#emaile"), $("#phoneb"), $("#passwordw1"), $("#passwordw2")
-            ];
-
-            // Check all required fields
-            for (var i = 0; i < requiredFields.length; i++) {
-                if (!requiredFields[i].val()) {
-                    error = "All mandatory fields required!";
-                    break;
-                }
-            }
-
-            // Validate email
-            if (!error && !validateEmail($("#emaile").val())) {
-                error = "Invalid email format!";
-            }
-
-            // Validate passwords
-            if (!error && $("#passwordw1").val() !== $("#passwordw2").val()) {
-                error = "Passwords do not match!";
-            }
-
-            // Validate password strength
-            if (!error && !validatePassword($("#passwordw1").val())) {
-                error = "Password must be at least 8 characters long!";
-            }
-
-            if (error) {
-                $("#errorreport").html(error);
-                return;
-            }
-
-            var r = confirm("Are you sure you want to submit this information? Click OK to proceed or CANCEL to stop.");
-            if (!r) return;
-
-            showLoader($("#errorreport"));
-            $("#innov_next_button").addClass("hidden");
-
-            var formData = new FormData($("#commentForm")[0]);
-            $.ajax({
-                url: 'login/signup.php',
-                method: 'POST',
-                data: formData,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function (response) {
-                    var responsed = atob(response);
-                    if ($.trim(responsed) === "This account exists") {
-                        $("#errorreport").html("This account exists");
-                    } else {
-                        $("#errorreport").html("");
-                        $("#secret_key").val($.trim(response));
-
-                        $(".logins").hide();
-                        $("#login_page").show();
-                        $("#login_headers").html("ACCOUNT VERIFICATION");
-                        $(".logins").hide();
-                        $("#pass_resetpage").show();
-                        $(".recover_dives").hide();
-                        $("#confirm_mcodes").show();
-                    }
-                },
-                error: function () {
-                    $("#errorreport").html("Error submitting form. Please try again.");
-                }
-            });
-        });
-
-        $("#termsbs").click(function () {
-            $(this).prop("checked", !$(this).prop("checked"));
-        });
 
         // Registration form validation
         $("#newpassword, #password_confirm").focusout(function () {
@@ -1214,7 +1068,7 @@ if (isset($_SESSION["id"])) {
 
             showLoader($("#error_data"));
 
-            $.post("login/login.php", { busername: busername, bpass: bpass }, function (response) {
+            $.post("logins/login.php", { busername: busername, bpass: bpass }, function (response) {
                 var ddata = atob(response);
 
                 if (recoversource) {
@@ -1223,9 +1077,6 @@ if (isset($_SESSION["id"])) {
                 }
 
                 switch ($.trim(ddata)) {
-                    case "e_learning":
-                        handleSuccessfulLogin(busername, "mydashboard/e_learning.php");
-                        break;
                     case "portal":
                         handleSuccessfulLogin(busername, "mydashboard/dashboard.php");
                         break;
@@ -1243,16 +1094,19 @@ if (isset($_SESSION["id"])) {
                         $("#forgot_pwd_title").click();
                         $("#newnow_pass").show();
                         break;
+                    case "account_not_activated":
+                        // Show activation page
+                        $(".auth-card").hide();
+                        $("#activation_page").show();
+                        $("#error_data").html("");
+                        break;
                     case "":
                         $("#error_data").html("");
                         break;
                     default:
                         $("#secret_key").val($.trim(response));
-                        $("#login_headers").html("ACCOUNT VERIFICATION");
-                        $(".logins").hide();
-                        $("#pass_resetpage").show();
-                        $(".recover_dives").hide();
-                        $("#confirm_mcodes").show();
+                        $(".auth-card").hide();
+                        $("#activation_page").show();
                         $("#error_data").html("");
                 }
             }).fail(function () {
@@ -1321,7 +1175,7 @@ if (isset($_SESSION["id"])) {
 
             var formData = new FormData($("#reg_form")[0]);
             $.ajax({
-                url: 'login/validate.php',
+                url: 'logins/validate.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1333,13 +1187,8 @@ if (isset($_SESSION["id"])) {
                         $("#sign_uperror").html(responsed).css("color", "black");
                     } else {
                         $("#secret_key").val($.trim(response));
-                        $(".logins").hide();
-                        $("#login_page").show();
-                        $("#login_headers").html("ACCOUNT VERIFICATION");
-                        $(".logins").hide();
-                        $("#pass_resetpage").show();
-                        $(".recover_dives").hide();
-                        $("#confirm_mcodes").show();
+                        $(".auth-card").hide();
+                        $("#activation_page").show();
                     }
                 },
                 error: function () {
@@ -1377,7 +1226,7 @@ if (isset($_SESSION["id"])) {
 
             var formData = new FormData($("#recover_form")[0]);
             $.ajax({
-                url: 'login/recover.php',
+                url: 'logins/recover.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1422,51 +1271,65 @@ if (isset($_SESSION["id"])) {
             }
         });
 
-        $("#confirm_codesd").click(function () {
-            var coded = $("#conf_codes").val();
+        // Account activation
+        $("#activate_account").click(function () {
+            var code = $("#activation_code").val();
             var keycode = $("#secret_key").val();
 
-            if (!coded) {
-                $("#confirm_dderror").html("Input confirmation code").css("color", "red");
+            if (!code) {
+                $("#activation_error").html("Input activation code").css("color", "red");
                 return;
             }
 
-            var new_coded = btoa(coded);
-            if (new_coded === keycode) {
-                var busername = btoa($("#username").val()) || btoa($("#Email").val());
+            var new_code = btoa(code);
+            if (new_code === keycode) {
+                showLoader($("#activation_error"));
 
-                showLoader($("#confirm_dderror"));
-
-                $.post("login/update.php", { busername: busername }, function (response) {
+                // Send activation request
+                $.post("logins/activate.php", { activation_code: code }, function (response) {
                     var ddata = atob(response);
                     if ($.trim(ddata) === "success") {
-                        $("#user_email").val(busername);
-                        showLoader($("#confirm_dderror"));
-                        loadDashboard(busername);
+                        $("#activation_error").html("");
+                        $("#activation_success").html("Account activated successfully! Redirecting to login...");
+
+                        // Redirect to login after 2 seconds
+                        setTimeout(function () {
+                            $(".auth-card").hide();
+                            $("#login_page").show();
+                            $("#activation_success").html("");
+                        }, 2000);
                     } else {
-                        $("#confirm_dderror").html(ddata).css("color", "red");
+                        $("#activation_error").html(ddata).css("color", "red");
                     }
                 }).fail(function () {
-                    $("#confirm_dderror").html("Error verifying account. Please try again.").css("color", "red");
+                    $("#activation_error").html("Error activating account. Please try again.").css("color", "red");
                 });
             } else {
-                $("#confirm_dderror").html("Wrong confirmation code, try again!").css("color", "red");
+                $("#activation_error").html("Wrong activation code, try again!").css("color", "red");
             }
         });
 
-        function loadDashboard(username) {
-            $.post("mydashboard/dashboard.php", { model: username }, function (data) {
-                $(".modal-backdrop").hide();
-                $('body').removeClass("modal-open");
-                $("#error_data").html("");
-                $("#home_pagedata").hide().html("");
-                $("#loginmodal").modal("hide").removeData();
-                $("#landing_page").show().html(data);
-                $("#confirm_dderror").html("").css("color", "black");
+        // Resend activation code
+        $("#resend_activation").click(function () {
+            showLoader($("#activation_error"));
+
+            $.post("logins/resend_activation.php", function (response) {
+                var ddata = atob(response);
+                if ($.trim(ddata) === "success") {
+                    $("#activation_error").html("");
+                    $("#activation_success").html("Activation code sent successfully!");
+
+                    // Clear success message after 3 seconds
+                    setTimeout(function () {
+                        $("#activation_success").html("");
+                    }, 3000);
+                } else {
+                    $("#activation_error").html(ddata).css("color", "red");
+                }
             }).fail(function () {
-                $("#confirm_dderror").html("Error loading dashboard. Please try again.").css("color", "red");
+                $("#activation_error").html("Error sending activation code. Please try again.").css("color", "red");
             });
-        }
+        });
 
         // New password creation
         $("#password_n, #new_passworn").focusout(function () {
@@ -1501,7 +1364,7 @@ if (isset($_SESSION["id"])) {
 
             var formData = new FormData($("#new_passset")[0]);
             $.ajax({
-                url: 'login/reset.php',
+                url: 'logins/reset.php',
                 method: 'POST',
                 data: formData,
                 contentType: false,
@@ -1510,7 +1373,7 @@ if (isset($_SESSION["id"])) {
                 success: function (response) {
                     var responsed = atob(response);
                     if (responsed === "success") {
-                        $(".logins").hide();
+                        $(".auth-card").hide();
                         $("#login_page").show();
                         $("#login_headers").html("LOGIN WITH THE NEW PASSWORD");
                         $("#createerror").html("").css("color", "black");
@@ -1584,23 +1447,6 @@ if (isset($_SESSION["id"])) {
     });
 </script>
 
-
-
-<!--page level js ends-->
-<script type="text/javascript">
-
-    $('.count').each(function () {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 4000,
-            easing: 'swing',
-            step: function (now) {
-                $(this).text(Math.ceil(now));
-            }
-        });
-    });
-</script>
 <script>
     $(document).ready(function () {
         //var recoversource="";
@@ -1619,21 +1465,15 @@ if (isset($_SESSION["id"])) {
             $(".about_uspages").hide();
         })
         $("#back_tologin").click(function () {
-            $(".logins").hide();
+            $(".auth-card").hide();
             $("#login_page").show();
             $("#login_headers").html("LOGIN HERE")
         })
         $("#back_toregister").click(function () {
             $("#login_headers").html("SIGN UP HERE")
-            $(".logins").hide();
+            $(".auth-card").hide();
             $("#register_page").show();
         })
-        $("#back_toelearning").click(function () {
-            $("#login_headers").html("SIGN UP TO E-LEARNING")
-            $(".logins").hide();
-            $("#elearning_page").show();
-        })
-
 
         //gto confirm acc 
         var loginuser = '<?php echo $loginuser ?>';
@@ -1671,31 +1511,3 @@ if (isset($_SESSION["id"])) {
 
     });
 </script>
-<!-- end page level js -->
-<script type="text/javascript" src="minijava.js"></script>
-<script type="text/javascript" src="Huduma_WhiteBox/jquery.js"></script>
-<script type="text/javascript" src="Huduma_WhiteBox/bootstrap.js"></script>
-<script src="Huduma_WhiteBox/bootstrapValidator.js" type="text/javascript"></script>
-<script type="text/javascript" src="Huduma_WhiteBox/icheck.js"></script>
-<script type="text/javascript" src="Huduma_WhiteBox/register_custom.js"></script>
-<!--global js end-->
-<script type="text/javascript" src="Huduma_WhiteBox/slick.js"></script>
-
-<script language="JavaScript">
-    $(document).ready(function () {
-        $(document).bind("contextmenu", function (e) {
-
-            return false;
-
-        })
-
-
-    })
-
-
-</script>
-
-
-</body>
-
-</html>
