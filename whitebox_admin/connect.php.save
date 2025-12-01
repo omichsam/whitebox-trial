@@ -1,9 +1,7 @@
 <?php
 $host="localhost";
 $username="root";
-// $password="A073955@amk77";
 $password="";
-// $db_name="live2022whiteboxmay10mega";
 $db_name="whitebox";
 
 $Today=date("Y-m-d");
@@ -14,7 +12,12 @@ $m=date("m");
 $d=date("d");
 $Timezone=date_default_timezone_set('Africa/Nairobi');
 $NOW=date('H:i:s a',time());
-$DateTime=date('Y-m-d H:i:s a',time());
+$DateTime=date
+
+
+
+
+('Y-m-d H:i:s a',time());
 
 $con = mysqli_connect($host,$username,$password,$db_name);
 

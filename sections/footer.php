@@ -131,7 +131,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const API_BASE_URL = 'http://127.0.0.1:5000';
+        // const API_BASE_URL = 'http://127.0.0.1:5000';
+        // const TWEETS_LIMIT = 10;
+
+	//const API_BASE_URL = 'http://127.0.0.1:5000';
+        //const API_BASE_URL = 'http://10.241.18.19:8010/api/post';
+        const API_BASE_URL = 'http://10.241.18.19:8010';
         const TWEETS_LIMIT = 10;
 
         function formatRelativeTime(createdAt) {

@@ -1,8 +1,8 @@
 <?php
 $host="localhost";
 $username="root";
-$password="";
-$db_name="whitebox";
+$password="A073955@amk77";
+$db_name="live2022whiteboxmay10mega";
 
 $Today=date("Y-m-d");
 $y=date("Y");

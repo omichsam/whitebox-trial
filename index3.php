@@ -1,19 +1,6 @@
 <?php
 session_start();
 ?>
-<?php
-if (isset($_GET['activated']) && $_GET['activated'] === "true") {
-    echo "<script>
-        alert('Your account has been activated successfully. You can now log in.');
-
-        // Remove ?activated=true from the URL
-        if (window.history.replaceState) {
-            const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            window.history.replaceState({path:newUrl}, '', newUrl);
-        }
-    </script>";
-}
-?>
 <!DOCTYPE html>
 
 <?php

@@ -238,7 +238,8 @@
         let isMenuVisible = false;
         let isFormatVisible = false;
         let sessionId = generateSessionId();
-        const API_BASE_URL = 'http://localhost:8007/api';
+        //const API_BASE_URL = 'http://localhost:8007/api';
+	const API_BASE_URL = 'http://10.241.18.19:8006/api';
 
         // Generate a unique session ID
         function generateSessionId() {
