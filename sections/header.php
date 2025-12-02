@@ -143,7 +143,7 @@
                     height="150px">
             </div>
             <div class="hidden md:block">
-                <h1 class="text-md font-semibold italics">Innovation Platform</h1>
+                <!-- <h1 class="text-md font-semibold italics">Innovation Platform</h1> -->
                 <!-- <h1 class="text-lg font-bold">Huduma WhiteBox</h1>
                 <p class="text-xs opacity-80">Innovation Platform</p> -->
             </div>

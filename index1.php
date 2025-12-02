@@ -66,7 +66,11 @@ if (isset($_SESSION["id"])) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>WhiteBox - Login</title>
+=======
+    <title>WhiteBox - Authentication</title>
+>>>>>>> 7047db72fbde7cd5c346855102e63db2c9558b06
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
