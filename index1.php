@@ -1,6 +1,35 @@
 <?php
 session_start();
 ?>
+
+<?php
+// Handle alerts for activation and password reset
+if (isset($_GET['activated']) && $_GET['activated'] === "true") {
+    echo "<script>
+        alert('Your account has been activated successfully. You can now log in.');
+
+        // Remove query string from URL
+        if (window.history.replaceState) {
+            const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+            window.history.replaceState({path:newUrl}, '', newUrl);
+        }
+    </script>";
+}
+
+if (isset($_GET['password_reset']) && $_GET['password_reset'] === "true") {
+    echo "<script>
+        alert('Your password has been reset successfully. You can now log in with your new password.');
+
+        // Remove query string from URL
+        if (window.history.replaceState) {
+            const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+            window.history.replaceState({path:newUrl}, '', newUrl);
+        }
+    </script>";
+}
+?>
+
+
 <!DOCTYPE html>
 
 <?php
